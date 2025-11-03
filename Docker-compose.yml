@@ -1,0 +1,41 @@
+services:
+  mysqldb:   
+    image: mysql:8
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: docker    
+      MYSQL_DATABASE: dresstable 
+    ports: 
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - springboot-mysql-net
+
+  backend:
+    image : ruchithavemula11/dress-backkube:latest
+    container_name: hotel-backend
+    ports:
+      - "2090:2090"
+    depends_on:
+      - mysqldb
+    restart: on-failure
+    networks:
+      - springboot-mysql-net
+
+  frontend:
+    image: ruchithavemula11/docker-frontkube:latest
+    container_name: hotel-frontend
+    ports:
+      - "3080:80"
+    depends_on:
+      - backend
+    restart: on-failure
+    networks:
+      - springboot-mysql-net
+
+volumes:
+  mysql_data:
+
+networks:
+  springboot-mysql-net:
