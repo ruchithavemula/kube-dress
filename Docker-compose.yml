@@ -16,7 +16,7 @@ services:
     image : ruchithavemula11/dress-backkube:latest
     container_name: hotel-backend
     ports:
-      - "2090:2090"
+      - "30010:2090"
     depends_on:
       - mysqldb
     restart: on-failure
@@ -27,7 +27,7 @@ services:
     image: ruchithavemula11/docker-frontkube:latest
     container_name: hotel-frontend
     ports:
-      - "3080:80"
+      - "30020:80"
     depends_on:
       - backend
     restart: on-failure
