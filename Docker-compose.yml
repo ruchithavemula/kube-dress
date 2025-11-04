@@ -13,7 +13,7 @@ services:
       - springboot-mysql-net
 
   backend:
-    image : ruchithavemula11/dress-backkube:latest
+    image : ruchithavemula11/dress-backkube:latest 
     container_name: hotel-backend
     ports:
       - "30010:2090"
