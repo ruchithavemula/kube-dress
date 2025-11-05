@@ -71,7 +71,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ruchithavemula11/k8-dress-backend:latest  
+          image: ruchithavemula11/dress-backkube:latest 
           ports:
             - containerPort: 2090
 ---
